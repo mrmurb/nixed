@@ -8,6 +8,7 @@
     ./polybar.nix
     ./programs/kitty.nix
     ./programs/vim.nix
+    ./programs/zsh.nix
   ];
 
   xsession = {
@@ -69,6 +70,26 @@
       userEmail = "max@ig4.se";
       extraConfig = {
         init.defaultBranch = "master";
+        core.pager = "diff-so-fancy | less --tabs=4 -RFX";
+        interactive.diffFilter = "diff-so-fancy --patch";
+        color = {
+          ui = true;
+          diff = {
+            meta = 11;
+            frag = "magenta bold";
+            func = "146 bold";
+            commit = "yellow bold";
+            old = "red bold";
+            new = "green bold";
+            whitespace = "red reverse";
+          };
+          "diff-highlight" = {
+            oldNormal = "red bold";
+            oldHighlight = "red bold 52";
+            newNormal = "green bold";
+            newHighlight = "green bold 22";
+          };
+        };
       };
     };
 
@@ -98,6 +119,7 @@
     neofetch
     material-design-icons
     nerdfonts
+    diff-so-fancy
   ];
 
   home.username = "max";
