@@ -3,9 +3,9 @@
 {
   nixpkgs.config = {
     allowUnfree = true;
-    packageOverrides = pkgs: {
-      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-    };
+#    packageOverrides = pkgs: {
+#      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+#    };
   };
 
   imports =
@@ -18,7 +18,11 @@
     pulseaudio.enable = true;
     opengl = {
       enable = true;
-      extraPackages = with pkgs; [ vaapiIntel ];
+      extraPackages = with pkgs; [
+        vaapiIntel
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
       driSupport = true;
     };
   };
