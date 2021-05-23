@@ -82,12 +82,8 @@
     libinput = {
       enable = true;
     };
-    videoDrivers = [ "intel" ];
-    deviceSection = ''
-      Option "AccelMethod" "uxa"
-      Option "DRI" "2"
-      Option "TearFree" "true"
-    '';
+    # videoDrivers = [ "intel" ];
+    videoDrivers = [ "modesetting" ];
     desktopManager.xterm.enable = true;
   };
 

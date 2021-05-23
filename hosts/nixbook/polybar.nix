@@ -22,7 +22,7 @@
         };
 
         "bar/top" = {
-          monitor = "eDP1";
+          monitor = "eDP-1";
           width = "100%";
           height = 25;
           background = "\${colors.background}";
@@ -164,7 +164,10 @@
               background = "\${colors.content-background}";
               padding = 1;
             };
-            volume = "<ramp-volume> <label-volume>";
+            volume = {
+              text = "<ramp-volume> <label-volume>";
+              padding = 1;
+            };
           };
           ramp = {
             volume.foreground = "\${colors.cyan}";

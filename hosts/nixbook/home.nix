@@ -39,13 +39,17 @@
           pointer_action2 = "resize_corner";
         };
         monitors = {
-          eDP1 = [ "0001" "0010" "0011" "0100" ];
+          "eDP-1" = [ "0001" "0010" "0011" "0100" ];
         };
       };
     };
   };
 
   services = {
+    picom = {
+      enable = true;
+      vSync = true;
+    };
     sxhkd = {
       enable = true;
       keybindings = {
