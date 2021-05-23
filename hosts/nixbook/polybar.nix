@@ -1,9 +1,10 @@
-{ config, ...}:
+{ config, pkgs, ...}:
 
 {
   services = {
     polybar = {
       enable = true;
+      package = pkgs.polybar.override { pulseSupport = true; };
       settings = {
         "colors" = {
           background         = "#11121D";
@@ -42,12 +43,12 @@
           font = {
             "0" = "Hack Nerd Font:style=Bold:pixelsize=13;3";
             "1" = "Material Design Icons:style=Bold:size=13;3";
-            "2" = "unifont:fontformat=truetype:size=13:antialias=true;";
+#            "2" = "unifont:fontformat=truetype:size=13:antialias=true;";
           };
          
           modules = {
             left = "round-left bspwm round-right";
-            right  = "wlan battery round-left time round-right";
+            right  = "wlan audio battery round-left time round-right";
           };
         };
 
@@ -114,7 +115,7 @@
             foreground = "\${colors.foreground}";
             background = "\${colors.content-background}";
 
-            charging           = "<ramp-capacity> <label-charging>";
+            charging           = "<animation-charging> <label-charging>";
             charging-padding   = 1;
             chargin-foreground = "\${colors.foreground}";
 
@@ -144,6 +145,35 @@
           animation-charging-2 = " ";
           animation-charging-3 = " ";
           animation-charging-4 = " ";
+          animation-charging-framerate = 750;
+        };
+
+        "module/audio" = {
+          type = "internal/pulseaudio";
+          label = {
+            muted = " ";
+            volume = {
+              text = "%percentage%%";
+              foreground = "\${colors.foreground}";
+            };
+          };
+          format = {
+            muted = {
+              text = "<label-muted>";
+              foreground = "\${colors.foreground}";
+              background = "\${colors.content-background}";
+              padding = 1;
+            };
+            volume = "<ramp-volume> <label-volume>";
+          };
+          ramp = {
+            volume.foreground = "\${colors.cyan}";
+            volume.text = [
+              ""
+              ""
+              ""
+            ];
+          };
         };
 
         "module/wlan" = {
