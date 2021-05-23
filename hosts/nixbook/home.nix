@@ -111,6 +111,11 @@
       package = pkgs.vscode;
     };
 
+    go = {
+      enable = true;
+      goPath = "dev/go";
+    };
+
     bat.enable = true;
   };
 

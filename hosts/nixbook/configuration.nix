@@ -91,8 +91,10 @@
   services.actkbd = {
     enable = true;
     bindings = [
-      { keys = [ 224 ]; events = [ "key" ]; command = "${pkgs.light}/bin/light -U 5"; }
-      { keys = [ 225 ]; events = [ "key" ]; command = "${pkgs.light}/bin/light -A 5"; }
+      { keys = [ 224 ]; events = [ "key" "rep" ]; command = "${pkgs.light}/bin/light -U 2"; }
+      { keys = [ 225 ]; events = [ "key" "rep" ]; command = "${pkgs.light}/bin/light -A 2"; }
+      { keys = [ 229 ]; events = [ "key" "rep" ]; command = "${pkgs.light}/bin/light -s sysfs/leds/smc::kbd_backlight -U 2"; }
+      { keys = [ 230 ]; events = [ "key" "rep" ]; command = "${pkgs.light}/bin/light -s sysfs/leds/smc::kbd_backlight -A 2"; }
     ];
   };
 
