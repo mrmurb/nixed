@@ -49,16 +49,21 @@
     sxhkd = {
       enable = true;
       keybindings = {
-        "mod4 + shift + e" = "bspc quit";
-        "mod4 + shift + q" = "bspc node -c";
-        "mod4 + t"         = "bspc node -l next";
-        "mod4 + b"         = "bspc desktop -B";
-        "mod4 + Tab"       = "bspc node -f last";
-        "mod4 + {a,s,f}"   = "bspc node -t {tiled,floating,fullscreen}";
-        "mod4 + {ctrl,shift,alt} + {Left,Down,Up,Right}" = "bspc node -{f,s,p} {west,south,north,east}";
-        "mod4 + {_,shift + }{1-9,0}"                     = "bspc {desktop -f,node -d} '^{1-9,10}'";
+        "super + shift + e" = "bspc quit";
+        "super + shift + q" = "bspc node -c";
+        "super + t"         = "bspc node -l next";
+        "super + b"         = "bspc desktop -B";
+        "super + Tab"       = "bspc node -f last";
+        "super + {a,s,f}"   = "bspc node -t {tiled,floating,fullscreen}";
+        "super + {ctrl,shift,alt} + {Left,Down,Up,Right}" = "bspc node -{f,s,p} {west,south,north,east}";
+        "super + {_,shift + }{1-9,0}"                     = "bspc {desktop -f,node -d} '^{1-9,10}'";
         "super + {_,shift + } d"  = "rofi -show {run,ssh} -hide-scrollbar";
-        "mod4 + Return"           = "kitty";
+        "super + Return"          = "kitty";
+        "super + Escape"          = "pkill -USR1 -x sxhkd";
+        "XF86AudioMute"         = "amixer -q set Master toggle";
+        "XF86AudioLowerVolume"  = "amixer -q set Master 2%- unmute";
+        "XF86AudioRaiseVolume"  = "amixer -q set Master 2%+ unmute";
+
       };
     };
   };
